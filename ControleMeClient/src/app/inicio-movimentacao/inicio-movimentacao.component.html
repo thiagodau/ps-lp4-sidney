@@ -1,0 +1,58 @@
+<div class="navbar">
+  {{ tituloPagina }}
+</div>
+
+<div class="ui-g">
+  <div class="ui-g">
+    <div class="ui-g-6">
+      <p-growl [(value)]="mensagens"></p-growl>
+      <p-accordion>
+        <p-accordionTab header="Adicionar Movimentação" [selected]="false">
+          <!-- FORMULARIO DE INSERCAO DE MOVIMENTACAO -->
+          <form #frm="ngForm" (ngSubmit)="adicionarMovimentacao(frm)">
+            <div class="ui-g-6 ui-sm-12 ui-fluid">
+              <label>Valor:</label>
+              <input type="number" name="valor" [(ngModel)]="val" ngModel required>
+            </div>
+            <div class="ui-g-12">
+              <button pButton type="submit" label="Adicionar" [disabled]="frm.invalid" icon="fa-send-o"></button>
+            </div>
+          </form>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="ui-g-6">
+      <p-accordion>
+        <p-accordionTab header="Saldo" [selected]="false">
+          <div class="ui-g-6">
+            <label>Renda Inicial:</label>
+            <input type="number" name="renda" [(ngModel)]="renda">
+          </div>
+          <div class="ui-g-6">
+            <label>Saldo Atual:</label>
+            <input type="number" name="saldo" [(ngModel)]="saldoAtual" disabled="true">
+          </div>
+          <div class="ui-g-12">
+            <button pButton (click)="calcularSaldo()" label="Calcular com RI" icon="fa-calculator"></button>
+          </div>
+        </p-accordionTab>
+      </p-accordion>
+
+    </div>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <p-confirmDialog acceptLabel="Sim" rejectLabel="Não"></p-confirmDialog>
+      <p-dataTable #tabela [value]="movimentacoes" [rows]="10" emptyMessage="Nenhuma movimentação cadastrada">
+        <p-column field="valor" header="Movimentações"></p-column>
+        <p-column header="Estornar" [style]="{'width':'20%'}">
+          <ng-template let-movimentacao="rowData" pTemplate="body">
+            <button type="button" pButton (click)="remover(movimentacao)" icon="fa-trash"></button>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </div>
+  </div>
+</div>
