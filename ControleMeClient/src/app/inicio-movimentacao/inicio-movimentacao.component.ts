@@ -3,8 +3,6 @@ import { FormControl } from '@angular/forms';
 
 import { Router } from "@angular/router";
 
-
-import { ContatoService } from '../service/contato.service';
 import { MovimentacaoService } from '../service/movimentacao.service';
 
 import { Message } from 'primeng/components/common/api';
@@ -29,7 +27,6 @@ export class MovimentacaoComponent implements OnInit {
 
   constructor(
     private movimentacaoService: MovimentacaoService,
-    private contatoService: ContatoService,
     private roteador: Router,
     private confirmationService: ConfirmationService
   ) { }

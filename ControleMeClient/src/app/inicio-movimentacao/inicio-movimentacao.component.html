@@ -12,7 +12,10 @@
           <form #frm="ngForm" (ngSubmit)="adicionarMovimentacao(frm)">
             <div class="ui-g-6 ui-sm-12 ui-fluid">
               <label>Valor:</label>
-              <input type="number" name="valor" [(ngModel)]="val" ngModel required>
+              <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i>R$</i></span>
+                <input type="number" name="valor" [(ngModel)]="val" ngModel required>
+              </div>
             </div>
             <div class="ui-g-12">
               <button pButton type="submit" label="Adicionar" [disabled]="frm.invalid" icon="fa-send-o"></button>
@@ -27,11 +30,17 @@
         <p-accordionTab header="Saldo" [selected]="false">
           <div class="ui-g-6">
             <label>Renda Inicial:</label>
-            <input type="number" name="renda" [(ngModel)]="renda">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i>R$</i></span>
+              <input type="number" name="renda" [(ngModel)]="renda">
+            </div>
           </div>
           <div class="ui-g-6">
             <label>Saldo Atual:</label>
-            <input type="number" name="saldo" [(ngModel)]="saldoAtual" disabled="true">
+            <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i>R$</i></span>
+              <input type="number" name="saldo" [(ngModel)]="saldoAtual" disabled="true">
+            </div>
           </div>
           <div class="ui-g-12">
             <button pButton (click)="calcularSaldo()" label="Calcular com RI" icon="fa-calculator"></button>

@@ -8,11 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
-import { ContatoCadastroComponent } from './contato-cadastro/contato-cadastro.component';
-import { ContatoEdicaoComponent } from './contato-edicao/contato-edicao.component';
 import { MovimentacaoComponent } from './inicio-movimentacao/inicio-movimentacao.component'; 
 
-import { ContatoService } from './service/contato.service';
 import { MovimentacaoService } from './service/movimentacao.service';
 
 import { AccordionModule } from 'primeng/primeng';
@@ -32,8 +29,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 
 const rotas: Routes = [
-  { path: 'contato', component: ContatoCadastroComponent },
-  { path: 'contato/:id', component: ContatoEdicaoComponent },
   { path: 'movimentacoes', component: MovimentacaoComponent },
   { path: 'movimentacoes/:id', component: MovimentacaoComponent },
   { path: '', redirectTo: '/movimentacoes', pathMatch: 'full' }
@@ -42,8 +37,6 @@ const rotas: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ContatoCadastroComponent,
-    ContatoEdicaoComponent,
     NavbarComponent,
     MovimentacaoComponent
   ],
@@ -65,7 +58,6 @@ const rotas: Routes = [
     RouterModule.forRoot(rotas)
   ],
   providers: [
-    ContatoService,
     ConfirmationService,
     MovimentacaoService
   ],

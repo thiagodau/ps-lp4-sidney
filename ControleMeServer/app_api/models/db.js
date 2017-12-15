@@ -44,4 +44,4 @@ process.on('SIGTERM', function () {
     });
 });
 
-require('./contatos');
+require('./movimentacoes');
